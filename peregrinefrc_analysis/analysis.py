@@ -44,10 +44,7 @@ class Count(NamedTuple):
 class CountStats(NamedTuple):
     quantity: float
     average: float
-    maximum: float
-    minimum: float
-    minimum_other_than_zero: float
-
+    std: float
 
 def is_valid_report(
     report: dict,
@@ -68,17 +65,19 @@ def is_valid_report(
 
 def get_count_stats(values: list[float]) -> CountStats:
     """Returns a CountStats object using the provided list of metric values"""
-    non_zero = [i for i in values if i != 0]
-    if len(non_zero) == 0:
-        non_zero = [
-            0,
-        ]
+    average=sum(values) / len(values)
+    for  value in values:
+        std = value - average
+        if std < 0:
+            std *= -1
+        
+    
     return CountStats(
         quantity=len(values),
-        average=sum(values) / len(values),
-        maximum=max(values),
-        minimum=min(values),
-        minimum_other_than_zero=min(non_zero),
+        average = average,
+        std = std,
+        
+        
     )
 
 
@@ -128,11 +127,11 @@ def make_team_dataframe(
         row = []
         for i, _ in enumerate(count_names):
             stats = get_count_stats(counts[team][i])
-            row.extend([stats.minimum_other_than_zero, stats.average, stats.maximum])
+            row.extend([ stats.average,stats.std])
         data.append(row)
 
     columns = [
-        f"{i} {j}" for i in count_names for j in ["NZ Minimum", "Average", "Maximum"]
+        f"{i} {j}" for i in count_names for j in ["Average", "Std"]
     ]
     return DataFrame(data, columns=columns, index=teams)
 
