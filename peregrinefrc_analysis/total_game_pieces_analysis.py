@@ -15,3 +15,4 @@ df = make_team_dataframe(
     client, EVENT_ID, COUNT_NAMES, COUNT_FUNCTIONS
 )
 print(df)
+df.to_excel("scoutlist.xlsx")
