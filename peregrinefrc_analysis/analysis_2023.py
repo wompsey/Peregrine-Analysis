@@ -23,7 +23,7 @@ def L3_auto(entry_data: dict) -> bool:
 
 def L4_auto(entry_data: dict) -> bool:
     return "Coral L4 (auto)" in entry_data["name"]
-
+#Marcus functions (its disgusting)
 def deep_atempt(entry_data: dict) -> bool:
     return "Deep Climb Attempt" in entry_data["name"]
 def Algae_proc_auto(entry_data: dict) -> bool:
