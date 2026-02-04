@@ -1,7 +1,7 @@
 from collections import defaultdict
 from collections.abc import Callable
 from typing import Any, NamedTuple, Sequence
-
+import statistics
 from pandas import DataFrame
 
 from peregrine_client import PeregrineClient
@@ -65,17 +65,12 @@ def is_valid_report(
 
 def get_count_stats(values: list[float]) -> CountStats:
     """Returns a CountStats object using the provided list of metric values"""
-    average=sum(values) / len(values)
-    for  value in values:
-        std = value - average
-        if std < 0:
-            std *= -1
         
     
     return CountStats(
         quantity=len(values),
-        average = average,
-        std = std,
+        average = statistics.mean(values),
+        std = statistics.stdev(values),
         
         
     )

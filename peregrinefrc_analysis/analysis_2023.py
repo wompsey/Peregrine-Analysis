@@ -53,10 +53,6 @@ COUNT_FUNCTIONS = [
     L4_tele,
     Algae_proc_tele,
     Algae_in_net_tele,
-    Shallow_climb_atempt,
-    deep_atempt,
-    Played_defense,
-    Robot_died
     
 
 ]
@@ -73,8 +69,16 @@ COUNT_NAMES = [
     "Coral L4 (teleop)",
     "Algae in Processor (teleop)",
     "Algea in Net (teleop)",
+]
+
+COUNT_STATES_FUNC = [
+    Shallow_climb_atempt, 
+    deep_atempt, 
+    Played_defense, 
+    Robot_died]
+
+COUNT_STATES_NAMES = [
     "Shallow Climb Attempt",
     "deep_atempt",
     "Played Defense",
-    "Robot Died"
-]
+    "Robot Died"]
