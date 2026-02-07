@@ -40,6 +40,8 @@ def Shallow_climb_atempt(entry_data: dict) -> bool:
     return "Shallow Climb Attempt" in entry_data["name"]
 def Algae_in_net_tele(entry_data: dict) -> bool:
     return "Algae in Net (teleop)" in entry_data["name"]
+
+
 COUNT_FUNCTIONS = [
     L1_auto,
     L2_auto,
@@ -70,7 +72,6 @@ COUNT_NAMES = [
     "Algae in Processor (teleop)",
     "Algea in Net (teleop)",
 ]
-
 COUNT_STATES_FUNC = [
     Shallow_climb_atempt, 
     deep_atempt, 
@@ -82,3 +83,40 @@ COUNT_STATES_NAMES = [
     "deep_atempt",
     "Played Defense",
     "Robot Died"]
+COUNT_AUTO = [
+    L1_auto,
+    L2_auto,
+    L3_auto,
+    L4_auto,
+    Algae_proc_auto,
+    Algae_in_net_auto,
+    ]
+
+COUNT_AUTO_NAMES = [
+    "Coral L1 (auto)", 
+    "Coral L2 (auto)",
+    "Coral L3 (auto)",
+    "Coral L4 (auto)",
+    "Algae in Processor (auto)",
+    "Algea in Net (auto)",
+    "total auto score",
+    ]
+
+COUNT_TELE = [
+    L1_tele,
+    L2_tele,
+    L3_tele,
+    L4_tele,
+    Algae_proc_tele,
+    Algae_in_net_tele,
+    ]
+
+COUNT_TELE_NAMES = [
+    "Coral L1 (teleop)", 
+    "Coral L2 (teleop)",
+    "Coral L3 (teleop)",
+    "Coral L4 (teleop)",
+    "Algae in Processor (teleop)",
+    "Algea in Net (teleop)",
+    "total teleop score",
+    ]
