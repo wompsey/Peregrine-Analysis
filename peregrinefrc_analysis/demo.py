@@ -2,13 +2,13 @@ import sys
 from os import getenv
 from pprint import pprint
 import requests
-
+from constants import username, password, eventID
 BASE_URL = "https://api.peregrinefrc.com/"
 
 
 # Log into the server using username / password stored in environment variables
-username = "Alava"
-password = "heyisaac"
+username = username
+password = password
 
 print(f"Username: {username}")
 
@@ -26,7 +26,7 @@ security_header = {"Authorization": f"Bearer {access_token}"}
 
 # Get the available years on the server
 
-event = "2025wass"
+event = eventID
 
 payload = {"event": event}
 r = requests.get(BASE_URL + "reports", params=payload, headers=security_header)

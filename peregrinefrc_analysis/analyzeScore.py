@@ -92,7 +92,7 @@ def count_metric(
     return Count(team_number, total, valid)
 
 
-def make_team_dataframess(
+def make_score_dataframe(
     client: PeregrineClient,
     event: str,
     count_names: Sequence[str],
@@ -124,29 +124,54 @@ def make_team_dataframess(
             if i == 0:
                 stats = get_count_stats(counts[team][i])
                 row.extend([ stats.average * 3])
-                l1 = stats.average * 3
+                l1Auto = stats.average * 3
             elif i == 1:
                 stats = get_count_stats(counts[team][i])
                 row.extend([ stats.average * 4])
-                l2 = stats.average * 4
+                l2Auto = stats.average * 4
             elif i == 2:
                 stats = get_count_stats(counts[team][i])
                 row.extend([ stats.average * 6])
-                l3 = stats.average * 6
+                l3Auto = stats.average * 6
             elif i == 3:
                 stats = get_count_stats(counts[team][i])
                 row.extend([ stats.average * 7])
-                l4 = stats.average * 7
+                l4Auto = stats.average * 7
             elif i == 4:
                 stats = get_count_stats(counts[team][i])
                 row.extend([ stats.average * 6])
-                proc = stats.average * 6
+                procAuto = stats.average * 6
             elif i == 5:
                 stats = get_count_stats(counts[team][i])
                 row.extend([ stats.average * 4])  
-                net = stats.average * 4  
-        autoScore = l1 + l2 + l3 + l4 + proc + net
-        row.append(autoScore)
+                netAuto = stats.average * 4 
+            elif i == 6:
+                stats = get_count_stats(counts[team][i])
+                row.extend([ stats.average * 2])
+                l1Tele = stats.average * 2
+            elif i == 7:
+                stats = get_count_stats(counts[team][i])
+                row.extend([ stats.average * 3])
+                l2Tele = stats.average * 3
+            elif i == 8:
+                stats = get_count_stats(counts[team][i])
+                row.extend([ stats.average * 4])
+                l3Tele = stats.average * 4
+            elif i == 9:
+                stats = get_count_stats(counts[team][i])
+                row.extend([ stats.average * 5])
+                l4Tele = stats.average * 5
+            elif i == 10:
+                stats = get_count_stats(counts[team][i])
+                row.extend([ stats.average * 6])
+                procTele = stats.average * 6
+            elif i == 11:
+                stats = get_count_stats(counts[team][i])
+                row.extend([ stats.average * 4])    
+                netTele = stats.average * 4
+        teleScore = l1Tele + l2Tele + l3Tele + l4Tele + procTele + netTele
+        autoScore = l1Auto + l2Auto + l3Auto + l4Auto + procAuto + netAuto
+        row.extend([autoScore, teleScore, autoScore + teleScore])
         data.append(row)
 
     columns = [

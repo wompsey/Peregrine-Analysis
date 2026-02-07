@@ -1,11 +1,11 @@
 import requests
 
 from errors import AuthenticationError, MissingAccessTokenError
-
+from constants import username, password, eventID
 DEFAULT_URL = "https://api.peregrinefrc.com/"
 
-username = "Alava"
-password = "heyisaac"
+username = username
+password = password
 class PeregrineClient:
     def __init__(self, url: str = DEFAULT_URL):
         self._base_url = url

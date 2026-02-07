@@ -92,7 +92,7 @@ def count_metric(
     return Count(team_number, total, valid)
 
 
-def make_team_dataframesss(
+def make_team_dataframe(
     client: PeregrineClient,
     event: str,
     count_names: Sequence[str],
@@ -121,39 +121,14 @@ def make_team_dataframesss(
         teams.append(team.number)
         row = []
         for i, _ in enumerate(count_names):
-            if i == 0:
-                stats = get_count_stats(counts[team][i])
-                row.extend([ stats.average * 2])
-                l1 = stats.average * 2
-            elif i == 1:
-                stats = get_count_stats(counts[team][i])
-                row.extend([ stats.average * 3])
-                l2 = stats.average * 3
-            elif i == 2:
-                stats = get_count_stats(counts[team][i])
-                row.extend([ stats.average * 4])
-                l3 = stats.average * 4
-            elif i == 3:
-                stats = get_count_stats(counts[team][i])
-                row.extend([ stats.average * 5])
-                l4 = stats.average * 5
-            elif i == 4:
-                stats = get_count_stats(counts[team][i])
-                row.extend([ stats.average * 6])
-                proc = stats.average * 6
-            elif i == 5:
-                stats = get_count_stats(counts[team][i])
-                row.extend([ stats.average * 4])    
-                net = stats.average * 4
-        teleScore = ([l1 + l2 + l3 + l4 + proc + net])
-        row.extend(teleScore)   
+            stats = get_count_stats(counts[team][i])
+            row.extend([ stats.average,stats.std])
         data.append(row)
 
     columns = [
-        f"{i} {j}" for i in count_names for j in ["score"]
+        f"{i} {j}" for i in count_names for j in ["Average", "Std"]
     ]
     return DataFrame(data, columns=columns, index=teams)
-    return teleScore
 
 
 
