@@ -120,7 +120,7 @@ def make_team_dataframes(
         row = []
         for i, _ in enumerate(count_names):
             stats = get_count_stats(counts[team][i])
-            row.extend([ stats.average])
+            row.extend([stats.average])
         data.append(row)
 
     columns = [

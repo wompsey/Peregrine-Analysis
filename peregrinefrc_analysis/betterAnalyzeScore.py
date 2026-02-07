@@ -124,12 +124,12 @@ def make_score_dataframe(
         teleScore = 0
         autoScore = 0
 
-        points = [3, 4, 6, 7, 6, 4, 2, 3, 4, 5, 6, 4]
+        points = [1,15,10,20,30]
 
         for i, _ in enumerate(count_functions):
             stats = get_count_stats(counts[team][i])
             row.extend([stats.average * (points[i])])
-            if i < 6:
+            if i < 3:
                 autoScore += stats.average * points[i]
             else:                
                 teleScore += stats.average * points[i]
