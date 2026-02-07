@@ -82,7 +82,8 @@ COUNT_NAMES = [
     "Algea in Net (teleop)",
 ]
 
-COUNT_SCORE_NAMES = ["Coral L1 (auto)",
+COUNT_SCORE_NAMES = [
+    "Coral L1 (auto)",
     "Coral L2 (auto)",
     "Coral L3 (auto)",
     "Coral L4 (auto)",
