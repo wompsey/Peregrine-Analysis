@@ -45,6 +45,7 @@ class CountStats(NamedTuple):
     quantity: float
     average: float
 
+
 def is_valid_report(
     report: dict,
     excluded_realms: list[int] | None = None,
@@ -90,7 +91,7 @@ def count_metric(
     return Count(team_number, total, valid)
 
 
-def make_team_dataframes(
+def make_team_dataframe(
     client: PeregrineClient,
     event: str,
     count_names: Sequence[str],
@@ -120,10 +121,13 @@ def make_team_dataframes(
         row = []
         for i, _ in enumerate(count_names):
             stats = get_count_stats(counts[team][i])
-            row.extend([ stats.average])
+            row.extend([stats.average * 100])
         data.append(row)
 
     columns = [
-        f"{i} {j}" for i in count_names for j in ["Average"]
+        f"{i} {j}" for i in count_names for j in ["Average %"]
     ]
     return DataFrame(data, columns=columns, index=teams)
+
+
+
