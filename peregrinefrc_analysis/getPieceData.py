@@ -29,3 +29,6 @@ COUNT_NAMES = [
     "Robot Died"
 
 ]
+rankNames = [
+    "Before dead bot",
+    "After dead bot", ]
